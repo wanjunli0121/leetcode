@@ -11,19 +11,20 @@ package a0069_SqrtX;
 public class Solution {
 
     public int mySqrt(int x) {
+        // the upper bound of mid * mid <= x
+        if (x == 1) {
+            return 1;
+        }
         int lo = 1, hi = x;
-        while (lo <= hi) {
-            int mid = (lo + hi) / 2;
-            if (mid == x / mid) {
-                return mid;
-            }
-            if (mid < x / mid) {
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (x / mid >= mid) {
                 lo = mid + 1;
             } else {
-                hi = mid - 1;
+                hi = mid;
             }
         }
-        return hi;
+        return lo - 1;
     }
 
 }

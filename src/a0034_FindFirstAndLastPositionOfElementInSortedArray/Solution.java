@@ -17,34 +17,31 @@ public class Solution {
 
     public int[] searchRange(int[] nums, int target) {
         int[] result = {-1, -1};
-        int lo = 0, hi = nums.length - 1;
-
         // Find the left boundary.
+        int lo = 0, hi = nums.length;
         while (lo < hi) {
-            int mid = (lo + hi) / 2;
+            int mid = lo + (hi - lo) / 2;
             if (nums[mid] < target) {
                 lo = mid + 1;
             } else {
                 hi = mid;
             }
         }
-        if (nums[lo] == target) {
-            result[0] = lo;
-        } else {
+        if (lo >= nums.length || nums[lo] != target) {
             return result;
         }
-        hi = nums.length - 1;
-
+        result[0] = lo++;
         // Find the right boundary.
+        hi = nums.length;
         while (lo < hi) {
-            int mid = (lo + hi) / 2 + 1;
-            if (nums[mid] > target) {
-                hi = mid - 1;
+            int mid = lo + (hi - lo) / 2;
+            if (nums[mid] <= target) {
+                lo = mid + 1;
             } else {
-                lo = mid;
+                hi = mid;
             }
         }
-        result[1] = hi;
+        result[1] = lo - 1;
         return result;
     }
 
