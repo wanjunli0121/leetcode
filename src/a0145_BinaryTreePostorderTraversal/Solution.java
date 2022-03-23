@@ -21,16 +21,15 @@ import java.util.Stack;
 public class Solution {
 
     public List<Integer> postorderTraversal(TreeNode root) {
-        LinkedList<Integer> result = new LinkedList<Integer>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                result.addFirst(cur.val);
-                cur = cur.right;
+        LinkedList<Integer> result = new LinkedList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                result.addFirst(root.val);
+                stack.push(root);
+                root = root.right;
             }
-            cur = stack.pop().left;
+            root = stack.pop().left;
         }
         return result;
     }

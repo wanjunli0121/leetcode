@@ -20,17 +20,16 @@ import java.util.Stack;
 public class Solution {
 
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            cur = stack.pop();
-            result.add(cur.val);
-            cur = cur.right;
+            root = stack.pop();
+            result.add(root.val);
+            root = root.right;
         }
         return result;
     }
