@@ -14,8 +14,7 @@ package a0053_MaximumSubarray;
 public class Solution {
 
     public int maxSubArray(int[] nums) {
-        int sum = nums[0];
-        int cur = nums[0];
+        int sum = nums[0], cur = nums[0];
         for (int i = 1; i < nums.length; i++) {
             cur = Math.max(nums[i], cur + nums[i]);
             sum = Math.max(sum, cur);
