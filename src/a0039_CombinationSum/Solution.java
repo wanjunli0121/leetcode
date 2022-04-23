@@ -29,16 +29,16 @@ import java.util.List;
 
 public class Solution {
 
-    // https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
+    // https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
-        backtrack(list, new ArrayList<Integer>(), candidates, target, 0);
+        List<List<Integer>> list = new ArrayList<>();
+        backtrack(list, new ArrayList<>(), candidates, target, 0);
         return list;
     }
 
     private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] candidates, int remain, int start) {
         if (remain == 0) {
-            list.add(new ArrayList<Integer>(tempList));
+            list.add(new ArrayList<>(tempList));
         } else if (remain > 0) {
             for (int i = start; i < candidates.length; i++) {
                 tempList.add(candidates[i]);

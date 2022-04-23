@@ -24,16 +24,15 @@ import java.util.List;
 
 public class Solution {
 
-    // https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
-        backtrack(list, new ArrayList<Integer>(), nums, 0);
+        backtrack(list, new ArrayList<>(), nums, 0);
         return list;
     }
 
     private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-        list.add(new ArrayList<Integer>(tempList));
+        list.add(new ArrayList<>(tempList));
         for (int i = start; i < nums.length; i++) {
             if (i > start && nums[i] == nums[i - 1]) {
                 continue; // skip duplicates

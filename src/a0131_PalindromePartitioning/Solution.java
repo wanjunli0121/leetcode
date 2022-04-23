@@ -17,16 +17,15 @@ import java.util.List;
 
 public class Solution {
 
-    // https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
     public List<List<String>> partition(String s) {
-        List<List<String>> list = new ArrayList<List<String>>();
-        backtrack(list, new ArrayList<String>(), s, 0);
+        List<List<String>> list = new ArrayList<>();
+        backtrack(list, new ArrayList<>(), s, 0);
         return list;
     }
 
     private void backtrack(List<List<String>> list, List<String> tempList, String s, int start) {
         if (start == s.length()) {
-            list.add(new ArrayList<String>(tempList));
+            list.add(new ArrayList<>(tempList));
         } else {
             for (int i = start; i < s.length(); i++) {
                 if (isPalindrome(s, start, i)) {
