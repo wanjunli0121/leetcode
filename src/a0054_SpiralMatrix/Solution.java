@@ -19,7 +19,7 @@ import java.util.List;
 public class Solution {
 
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         int m = matrix.length;
         if (m == 0) {
             return result;
