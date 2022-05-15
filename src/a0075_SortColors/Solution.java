@@ -18,23 +18,22 @@ package a0075_SortColors;
 public class Solution {
 
     public void sortColors(int[] nums) {
-        int lo = 0, hi = nums.length - 1;
-        int i = 0;
-        // From nums[0] to nums[lo - 1]: 0
-        // From nums[hi + 1] to nums[nums.length - 1]: 2
-        while (i <= hi) {
-            if (nums[i] == 0) {
-                int t = nums[lo];
-                nums[lo++] = nums[i];
-                nums[i++] = t;
-            } else if (nums[i] == 2) {
-                int t = nums[i];
-                nums[i] = nums[hi];
-                nums[hi--] = t;
+        int lo = 0, hi = nums.length - 1, cur = 0;
+        while (cur <= hi) {
+            if (nums[cur] == 0) {
+                swap(nums, lo++, cur++);
+            } else if (nums[cur] == 2) {
+                swap(nums, cur, hi--);
             } else {
-                i++;
+                cur++;
             }
         }
+    }
+
+    private void swap(int[] nums, int a, int b) {
+        int t = nums[a];
+        nums[a] = nums[b];
+        nums[b] = t;
     }
 
 }

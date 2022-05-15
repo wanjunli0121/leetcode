@@ -15,7 +15,7 @@ public class Solution {
         if (lo > hi) {
             return null;
         }
-        int mid = (lo + hi) / 2;
+        int mid = lo + (hi - lo) / 2;
         TreeNode root = new TreeNode(nums[mid]);
         root.left = sortedArrayToBST(nums, lo, mid - 1);
         root.right = sortedArrayToBST(nums, mid + 1, hi);

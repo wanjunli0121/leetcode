@@ -21,18 +21,17 @@ package a0240_SearchA2DMatrixTwo;
 public class Solution {
 
     public boolean searchMatrix(int[][] matrix, int target) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            return false;
-        }
-        int row = 0, col = matrix[0].length - 1;
+        int m = matrix.length, n = matrix[0].length;
+        int i = 0, j = n - 1;
         // From top right
-        while (col >= 0 && row < matrix.length) {
-            if (target == matrix[row][col]) {
+        while (i < m && j >= 0) {
+            if (matrix[i][j] == target) {
                 return true;
-            } else if (target < matrix[row][col]) {
-                col--;
+            }
+            if (matrix[i][j] < target) {
+                i++;
             } else {
-                row++;
+                j--;
             }
         }
         return false;
