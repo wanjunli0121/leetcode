@@ -16,17 +16,17 @@ public class Solution {
 
     // https://leetcode.com/problems/gas-station/solution/
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        int start = 0, total_tank = 0, cur_tank = 0;
+        int start = 0, total = 0, cur = 0;
         for (int i = 0; i < gas.length; i++) {
             int t = gas[i] - cost[i];
-            total_tank += t;
-            cur_tank += t;
-            if (cur_tank < 0) {
+            total += t;
+            cur += t;
+            if (cur < 0) {
                 start = i + 1;
-                cur_tank = 0;
+                cur = 0;
             }
         }
-        return total_tank < 0 ? -1 : start;
+        return total < 0 ? -1 : start;
     }
 
 }

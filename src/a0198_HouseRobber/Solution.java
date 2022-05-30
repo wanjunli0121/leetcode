@@ -26,13 +26,13 @@ package a0198_HouseRobber;
 public class Solution {
 
     public int rob(int[] nums) {
-        int cur = 0, pre = 0;
+        int pre = 0, cur = 0;
         for (int i = 0; i < nums.length; i++) {
-            int temp = pre + nums[i];
-            pre = Math.max(cur, pre);
-            cur = temp;
+            int t = pre;
+            pre = cur;
+            cur = Math.max(t + nums[i], cur);
         }
-        return Math.max(cur, pre);
+        return cur;
     }
 
 }

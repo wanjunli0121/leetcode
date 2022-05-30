@@ -10,13 +10,13 @@ package a0209_MinimumSizeSubarraySum;
 
 public class Solution {
 
-    public int minSubArrayLen(int s, int[] nums) {
-        int left = 0, right = 0, sum = 0, result = 0;
-        while (right < nums.length) {
-            sum += nums[right++];
-            while (sum >= s) {
-                result = result == 0 ? right - left : Math.min(result, right - left);
-                sum -= nums[left++];
+    public int minSubArrayLen(int target, int[] nums) {
+        int lo = 0, hi = 0, sum = 0, result = 0;
+        while (hi < nums.length) {
+            sum += nums[hi++];
+            while (sum >= target) {
+                result = result == 0 ? hi - lo : Math.min(result, hi - lo);
+                sum -= nums[lo++];
             }
         }
         return result;

@@ -35,15 +35,15 @@ public class Solution {
         return count;
     }
 
-    private void oneIsland(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') {
+    private void oneIsland(char[][] grid, int row, int col) {
+        if (row < 0 || col < 0 || row >= grid.length || col >= grid[0].length || grid[row][col] == '0') {
             return;
         }
-        grid[i][j] = '0';
-        oneIsland(grid, i + 1, j);
-        oneIsland(grid, i - 1, j);
-        oneIsland(grid, i, j + 1);
-        oneIsland(grid, i, j - 1);
+        grid[row][col] = '0';
+        oneIsland(grid, row + 1, col);
+        oneIsland(grid, row - 1, col);
+        oneIsland(grid, row, col + 1);
+        oneIsland(grid, row, col - 1);
     }
 
 }
