@@ -29,27 +29,25 @@ package a0008_StringToIntegerAtoi;
 public class Solution {
 
     public int myAtoi(String str) {
-        if (str.length() == 0) {
-            return 0;
-        }
-        int i = 0;
-        int sign = 1;
-        int result = 0;
-        while (str.charAt(i) == ' ') {
+        int result = 0, i = 0, sign = 1;
+        while (i < str.length() && str.charAt(i) == ' ') {
             i++;
         }
-        if (str.charAt(i) == '+') {
-            i++;
-        } else if (str.charAt(i) == '-') {
+        if (i == str.length()) {
+            return result;
+        }
+        if (str.charAt(i) == '-') {
             sign = -1;
+            i++;
+        } else if (str.charAt(i) == '+') {
             i++;
         }
         while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-            if ((result > Integer.MAX_VALUE / 10)
-                    || (result == Integer.MAX_VALUE / 10 && str.charAt(i) - '0' > Integer.MAX_VALUE % 10)) {
+            if (result > (Integer.MAX_VALUE - (str.charAt(i) - '0')) / 10) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
-            result = 10 * result + (str.charAt(i++) - '0');
+            result = result * 10 + (str.charAt(i) - '0');
+            i++;
         }
         return sign * result;
     }

@@ -16,9 +16,8 @@ import java.util.HashMap;
 public class Solution {
 
     public int lengthOfLongestSubstring(String s) {
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        int result = 0;
-        int start = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int result = 0, start = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (map.containsKey(c)) {
