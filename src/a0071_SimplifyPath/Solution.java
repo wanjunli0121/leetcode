@@ -18,10 +18,10 @@ import java.util.Stack;
 public class Solution {
 
     public String simplifyPath(String path) {
-        String[] words = path.split("/");
-        Stack<String> stack = new Stack<String>();
-        for (int i = 0; i < words.length; i++) {
-            String s = words[i];
+        String[] strs = path.split("/");
+        Stack<String> stack = new Stack<>();
+        for (int i = 0; i < strs.length; i++) {
+            String s = strs[i];
             if (s.equals("..")) {
                 if (!stack.isEmpty()) {
                     stack.pop();
