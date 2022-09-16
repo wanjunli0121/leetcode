@@ -45,25 +45,12 @@ public class Solution {
         return new String(ca, 0, end);
     }
 
-    private void reverse(char[] ca, int start, int end) {
-        while (start < end) {
-            char c = ca[start];
-            ca[start++] = ca[end];
-            ca[end--] = c;
+    private void reverse(char[] ca, int lo, int hi) {
+        while (lo < hi) {
+            char c = ca[lo];
+            ca[lo++] = ca[hi];
+            ca[hi--] = c;
         }
     }
-
-//	Method 2:
-//  public String reverseWords(String s) {
-//    	s = s.trim();
-//    	StringBuilder sb = new StringBuilder();
-//      String[] splitted = s.split(" +");
-//      for (int i = splitted.length - 1; i > 0; i--) {
-//        	sb.append(splitted[i]);
-//        	sb.append(" ");
-//      }
-//      sb.append(splitted[0]);
-//      return sb.toString();
-//  }
 
 }

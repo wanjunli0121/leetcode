@@ -10,11 +10,11 @@ Return true because "leetcode" can be segmented as "leet code".
 
 package a0139_WordBreak;
 
-import java.util.Set;
+import java.util.List;
 
 public class Solution {
 
-    public boolean wordBreak(String s, Set<String> wordDict) {
+    public boolean wordBreak(String s, List<String> wordDict) {
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {

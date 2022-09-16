@@ -14,28 +14,32 @@ import java.util.List;
 public class Solution {
 
     public List<String> restoreIpAddresses(String s) {
-        List<String> address = new ArrayList<String>();
-        restoreIpAddresses(address, s, "", 0, 0);
-        return address;
+        List<String> list = new ArrayList<>();
+        backtrack(list, new ArrayList<>(), s, 0);
+        return list;
     }
 
-    private void restoreIpAddresses(List<String> address, String s, String cur, int count, int start) {
-        if (count == 4) {
+    private void backtrack(List<String> list, List<String> tempList, String s, int start) {
+        if (tempList.size() == 4) {
             if (start == s.length()) {
-                address.add(cur);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < tempList.size() - 1; i++) {
+                    sb.append(tempList.get(i));
+                    sb.append(".");
+                }
+                sb.append(tempList.get(tempList.size() - 1));
+                list.add(sb.toString());
             }
-            return;
-        }
-        for (int i = start + 1; i < start + 4 && i <= s.length(); i++) {
-            String part = s.substring(start, i);
-            if ((part.startsWith("0") && part.length() > 1) || (Integer.parseInt(part) > 255)) {
-                return;
+        } else {
+            for (int i = 1; i < 4 && start + i <= s.length(); i++) {
+                String t = s.substring(start, start + i);
+                if ((i > 1 && t.charAt(0) == '0') || Integer.parseInt(t) > 255) {
+                    return;
+                }
+                tempList.add(t);
+                backtrack(list, tempList, s, start + i);
+                tempList.remove(tempList.size() - 1);
             }
-            String t = cur + part;
-            if (count != 3) {
-                t += ".";
-            }
-            restoreIpAddresses(address, s, t, count + 1, i);
         }
     }
 
