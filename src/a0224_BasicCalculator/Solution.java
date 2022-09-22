@@ -17,11 +17,11 @@ import java.util.Stack;
 public class Solution {
 
     public int calculate(String s) {
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         int cur = 0, sign = 1, result = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (Character.isDigit(c)) {
+            if (c >= '0' && c <= '9') {
                 cur = cur * 10 + c - '0';
             } else if (c == '+') {
                 result += sign * cur;
