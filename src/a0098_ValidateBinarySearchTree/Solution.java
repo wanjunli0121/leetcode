@@ -24,14 +24,14 @@ public class Solution {
         return isValidBST(root, null, null);
     }
 
-    private boolean isValidBST(TreeNode root, Integer min, Integer max) {
+    private boolean isValidBST(TreeNode root, Integer minVal, Integer maxVal) {
         if (root == null) {
             return true;
         }
-        if ((max != null && root.val >= max) || (min != null && root.val <= min)) {
+        if ((maxVal != null && root.val >= maxVal) || (minVal != null && root.val <= minVal)) {
             return false;
         }
-        return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
+        return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
     }
 
 }

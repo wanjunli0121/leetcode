@@ -28,22 +28,19 @@ import java.util.List;
 public class Solution {
 
     public List<TreeNode> generateTrees(int n) {
-        if (n == 0) {
-            return new ArrayList<TreeNode>();
-        }
         return generateTrees(1, n);
     }
 
-    private List<TreeNode> generateTrees(int start, int end) {
-        List<TreeNode> result = new ArrayList<TreeNode>();
-        if (start > end) {
+    private List<TreeNode> generateTrees(int lo, int hi) {
+        List<TreeNode> result = new ArrayList<>();
+        if (lo > hi) {
             result.add(null);
             return result;
         }
         // Use i as root.
-        for (int i = start; i <= end; i++) {
-            List<TreeNode> leftSubtrees = generateTrees(start, i - 1);
-            List<TreeNode> rightSubtrees = generateTrees(i + 1, end);
+        for (int i = lo; i <= hi; i++) {
+            List<TreeNode> leftSubtrees = generateTrees(lo, i - 1);
+            List<TreeNode> rightSubtrees = generateTrees(i + 1, hi);
             for (TreeNode leftNode: leftSubtrees) {
                 for (TreeNode rightNode: rightSubtrees) {
                     TreeNode root = new TreeNode(i);
