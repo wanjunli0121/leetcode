@@ -1,23 +1,23 @@
 /*
 Given a binary tree,
-return the level order traversal of its nodes' values.
-(ie, from left to right, level by level).
+return the bottom-up level order traversal of its nodes' values.
+(ie, from left to right, level by level from leaf to root).
 For example:
 Given binary tree {3,9,20,#,#,15,7},
-    3
-   / \
-  9  20
-    /  \
-   15   7
-return its level order traversal as:
+3
+/ \
+9  20
+/  \
+15   7
+return its bottom-up level order traversal as:
 [
-  [3],
-  [9,20],
-  [15,7]
+[15,7],
+[9,20],
+[3]
 ]
 */
 
-package a0102_BinaryTreeLevelOrderTraversal;
+package a0107_BinaryTreeLevelOrderTraversalTwo;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -26,8 +26,8 @@ import java.util.Queue;
 
 public class Solution {
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        LinkedList<List<Integer>> result = new LinkedList<>();
         if (root == null) {
             return result;
         }
@@ -46,7 +46,7 @@ public class Solution {
                 }
                 cur.add(node.val);
             }
-            result.add(cur);
+            result.addFirst(cur);
         }
         return result;
     }

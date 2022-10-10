@@ -27,18 +27,17 @@ import java.util.Queue;
 
 public class Solution {
 
-    // BFS:
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
         }
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         boolean order = true;
         while (!queue.isEmpty()) {
             int level = queue.size();
-            LinkedList<Integer> cur = new LinkedList<Integer>();
+            LinkedList<Integer> cur = new LinkedList<>();
             for (int i = 0; i < level; i++) {
                 TreeNode node = queue.poll();
                 if (node.left != null) {
@@ -58,29 +57,5 @@ public class Solution {
         }
         return result;
     }
-
-//	  Method 2: DFS
-//    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-//        List<List<Integer>> result = new ArrayList<List<Integer>>();
-//        zigzagLevelOrder(result, root, 0);
-//        return result;
-//    }
-//
-//    private void zigzagLevelOrder(List<List<Integer>> list, TreeNode root, int level) {
-//    	if (root == null) {
-//    		return;
-//    	}
-//    	if (list.size() == level) {
-//    		list.add(new ArrayList<Integer>());
-//    	}
-//    	List<Integer> cur = list.get(level);
-//    	if (level % 2 == 0) {
-//    		cur.add(root.val);
-//    	} else {
-//    		cur.add(0, root.val);
-//    	}
-//    	zigzagLevelOrder(list, root.left, level + 1);
-//    	zigzagLevelOrder(list, root.right, level + 1);
-//    }
 
 }

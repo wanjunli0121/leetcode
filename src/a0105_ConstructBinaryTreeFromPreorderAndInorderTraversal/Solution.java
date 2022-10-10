@@ -22,21 +22,21 @@ import java.util.Map;
 public class Solution {
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> inMap = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> inMap = new HashMap<>();
         for (int i = 0; i < inorder.length; i++) {
             inMap.put(inorder[i], i);
         }
-        return buildTree(0, 0, inorder.length - 1, preorder, inorder, inMap);
+        return buildTree(0, 0, inorder.length - 1, preorder, inMap);
     }
 
-    private TreeNode buildTree(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder, Map<Integer, Integer> inMap) {
+    private TreeNode buildTree(int preStart, int inStart, int inEnd, int[] preorder, Map<Integer, Integer> inMap) {
         if (preStart >= preorder.length || inStart > inEnd) {
             return null;
         }
         TreeNode root = new TreeNode(preorder[preStart]);
         int inIndex = inMap.get(root.val);
-        root.left = buildTree(preStart + 1, inStart, inIndex - 1, preorder, inorder, inMap);
-        root.right = buildTree(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder, inMap);
+        root.left = buildTree(preStart + 1, inStart, inIndex - 1, preorder, inMap);
+        root.right = buildTree(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inMap);
         return root;
     }
 
