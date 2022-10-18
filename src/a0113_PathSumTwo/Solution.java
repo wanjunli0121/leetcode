@@ -24,24 +24,26 @@ import java.util.List;
 
 public class Solution {
 
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
-        pathSum(list, new ArrayList<Integer>(), root, sum);
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> list = new ArrayList<>();
+        pathSum(list, new ArrayList<>(), root, targetSum);
         return list;
     }
 
-    private void pathSum(List<List<Integer>> list, List<Integer> cur, TreeNode root, int sum) {
+    private void pathSum(List<List<Integer>> list, List<Integer> tempList, TreeNode root, int targetSum) {
         if (root == null) {
             return;
         }
-        cur.add(root.val);
-        if (root.left == null && root.right == null && root.val == sum) {
-            list.add(new ArrayList<Integer>(cur));
+        tempList.add(root.val);
+        if (root.left == null && root.right == null) {
+            if (root.val == targetSum) {
+                list.add(new ArrayList<>(tempList));
+            }
         } else {
-            pathSum(list, cur, root.left, sum - root.val);
-            pathSum(list, cur, root.right, sum - root.val);
+            pathSum(list, tempList, root.left, targetSum - root.val);
+            pathSum(list, tempList, root.right, targetSum - root.val);
         }
-        cur.remove(cur.size() - 1);
+        tempList.remove(tempList.size() - 1);
     }
 
 }
