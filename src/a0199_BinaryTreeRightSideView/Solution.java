@@ -20,13 +20,12 @@ import java.util.Queue;
 
 public class Solution {
 
-    // BFS:
     public List<Integer> rightSideView(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         if (root == null) {
             return result;
         }
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             int level = queue.size();
@@ -43,23 +42,5 @@ public class Solution {
         }
         return result;
     }
-
-//    Method 2: DFS
-//    public List<Integer> rightSideView(TreeNode root) {
-//        List<Integer> result = new ArrayList<Integer>();
-//        rightSideView(root, result, 0);
-//        return result;
-//    }
-//
-//    private void rightSideView(TreeNode node, List<Integer> list, int level) {
-//    	if (node == null) {
-//    		return;
-//    	}
-//    	if (list.size() == level) {
-//        	list.add(node.val);
-//    	}
-//    	rightSideView(node.right, list, level + 1);
-//    	rightSideView(node.left, list, level + 1);
-//    }
 
 }
