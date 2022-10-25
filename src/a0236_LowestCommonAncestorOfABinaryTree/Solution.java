@@ -25,15 +25,15 @@ public class Solution {
         if (root == null || root == p || root == q) {
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if (left == null) {
+        TreeNode leftRes = lowestCommonAncestor(root.left, p, q);
+        TreeNode rightRes = lowestCommonAncestor(root.right, p, q);
+        if (leftRes == null) {
             // Both p and q are in right subtree.
-            return right;
+            return rightRes;
         }
-        if (right == null) {
+        if (rightRes == null) {
             // Both p and q are in left subtree.
-            return left;
+            return leftRes;
         }
         // One in left subtree, one in right subtree.
         return root;

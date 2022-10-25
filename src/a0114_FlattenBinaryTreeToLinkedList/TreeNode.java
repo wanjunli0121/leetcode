@@ -1,0 +1,10 @@
+package a0114_FlattenBinaryTreeToLinkedList;
+
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) {
+        val = x;
+    }
+}
