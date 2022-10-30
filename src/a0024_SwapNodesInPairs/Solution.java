@@ -22,19 +22,4 @@ public class Solution {
         return nextNode;
     }
 
-//	  Method 2:
-//    public ListNode swapPairs(ListNode head) {
-//    	ListNode result = new ListNode(0);
-//    	result.next = head;
-//    	ListNode cur = result;
-//    	while (cur.next != null && cur.next.next != null) {
-//    		ListNode temp = cur.next.next;
-//    		cur.next.next = temp.next;
-//    		temp.next = cur.next;
-//    		cur.next = temp;
-//    		cur = temp.next;
-//    	}
-//    	return result.next;
-//    }
-
 }
