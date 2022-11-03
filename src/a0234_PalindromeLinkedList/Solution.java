@@ -32,36 +32,4 @@ public class Solution {
         return true;
     }
 
-//	Method 2:
-//	public boolean isPalindrome(ListNode head) {
-//      ListNode fast = head, slow = head;
-//      while (fast != null && fast.next != null) {
-//          fast = fast.next.next;
-//          slow = slow.next;
-//      }
-//      if (fast != null) {
-//          slow = slow.next;
-//      }
-//    	slow = reverseList(slow);
-//    	while (slow != null) {
-//    		if (head.val != slow.val) {
-//    			return false;
-//    		}
-//    		head = head.next;
-//    		slow = slow.next;
-//    	}
-//    	return true;
-//  }
-//
-//  private ListNode reverseList(ListNode head) {
-//      ListNode previous = null;
-//      while (head != null) {
-//        	ListNode nextNode = head.next;
-//        	head.next = previous;
-//        	previous = head;
-//        	head = nextNode;
-//      }
-//      return previous;
-//  }
-
 }
