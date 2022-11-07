@@ -17,18 +17,4 @@ public class Solution {
         return previous;
     }
 
-//	Method 2: Recursive.
-//	public ListNode reverseList(ListNode head) {
-//		return reverseList(head, null);
-//	}
-//
-//	private ListNode reverseList(ListNode head, ListNode previous) {
-//		if (head == null) {
-//			return previous;
-//		}
-//		ListNode nextNode = head.next;
-//		head.next = previous;
-//		return reverseList(nextNode, head);
-//	}
-
 }
