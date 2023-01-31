@@ -14,27 +14,23 @@ public class Solution {
         if (head == null) {
             return null;
         }
-        ListNode result = new ListNode(0);
-        ListNode last = head;
+        ListNode fast = head, slow = head;
         int size = 1;
-        // last is the last node.
-        while (last.next != null) {
-            last = last.next;
+        while (fast.next != null) {
+            fast = fast.next;
             size++;
         }
         k %= size;
         if (k == 0) {
             return head;
         }
-        ListNode trace = head;
-        // trace becomes the last node.
         for (int i = 0; i < size - k - 1; i++) {
-            trace = trace.next;
+            slow = slow.next;
         }
-        result.next = trace.next;
-        last.next = head;
-        trace.next = null;
-        return result.next;
+        ListNode nextNode = slow.next;
+        slow.next = null;
+        fast.next = head;
+        return nextNode;
     }
 
 }
