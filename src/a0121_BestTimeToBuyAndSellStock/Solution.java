@@ -20,16 +20,12 @@ package a0121_BestTimeToBuyAndSellStock;
 public class Solution {
 
     public int maxProfit(int[] prices) {
-        int result = 0;
-        if (prices.length == 0) {
-            return result;
-        }
-        int bought = prices[0];
+        int result = 0, bought = 0;
         for (int i = 1; i < prices.length; i++) {
-            if (prices[i] > bought) {
-                result = Math.max(prices[i] - bought, result);
+            if (prices[i] > prices[bought]) {
+                result = Math.max(result, prices[i] - prices[bought]);
             } else {
-                bought = prices[i];
+                bought = i;
             }
         }
         return result;
