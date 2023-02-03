@@ -26,7 +26,7 @@ public class MyStack {
 
     /* Initialize your data structure here. */
     public MyStack() {
-        queue = new LinkedList<Integer>();
+        queue = new LinkedList<>();
     }
 
     /* Push element x onto stack. */

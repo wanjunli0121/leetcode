@@ -25,8 +25,8 @@ public class MyQueue {
 
     /* Initialize your data structure here. */
     public MyQueue() {
-        input = new Stack<Integer>();
-        output = new Stack<Integer>();
+        input = new Stack<>();
+        output = new Stack<>();
     }
 
     /* Push element x to the back of queue. */
