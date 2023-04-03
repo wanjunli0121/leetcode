@@ -15,40 +15,40 @@ package a0094_BinaryTreeInorderTraversal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
+//import java.util.Stack;
 
 public class Solution {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            result.add(root.val);
-            root = root.right;
-        }
+        inorderTraversal(root, result);
         return result;
     }
 
-//    Method 2: Recursive
+    private void inorderTraversal(TreeNode node, List<Integer> list) {
+        if (node == null) {
+            return;
+        }
+        // left -> add -> right
+        inorderTraversal(node.left, list);
+        list.add(node.val);
+        inorderTraversal(node.right, list);
+    }
+
+//    Method 2
 //    public List<Integer> inorderTraversal(TreeNode root) {
-//        List<Integer> result = new ArrayList<Integer>();
-//        inorderTraversal(root, result);
-//        return result;
-//    }
-//
-//    private void inorderTraversal(TreeNode node, List<Integer> list) {
-//        if (node == null) {
-//            return;
+//        List<Integer> result = new ArrayList<>();
+//        Stack<TreeNode> stack = new Stack<>();
+//        while (root != null || !stack.isEmpty()) {
+//            while (root != null) {
+//                stack.push(root);
+//                root = root.left;
+//            }
+//            root = stack.pop();
+//            result.add(root.val);
+//            root = root.right;
 //        }
-//        // left -> add -> right
-//        inorderTraversal(node.left, list);
-//        list.add(node.val);
-//        inorderTraversal(node.right, list);
+//        return result;
 //    }
 
 }
