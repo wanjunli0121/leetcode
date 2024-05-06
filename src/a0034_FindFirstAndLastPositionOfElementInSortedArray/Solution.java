@@ -16,33 +16,36 @@ package a0034_FindFirstAndLastPositionOfElementInSortedArray;
 public class Solution {
 
     public int[] searchRange(int[] nums, int target) {
-        int[] result = {-1, -1};
-        // Find the left boundary.
-        int lo = 0, hi = nums.length;
-        while (lo < hi) {
+        int lo = 0, hi = nums.length - 1, first = -1, last = -1;
+
+        // 第一个等于target的位置
+        while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] < target) {
+            if (nums[mid] == target) {
+                first = mid;
+                hi = mid - 1;
+            } else if (nums[mid] < target) {
                 lo = mid + 1;
             } else {
-                hi = mid;
+                hi = mid - 1;
             }
         }
-        if (lo >= nums.length || nums[lo] != target) {
-            return result;
-        }
-        result[0] = lo++;
-        // Find the right boundary.
-        hi = nums.length;
-        while (lo < hi) {
+
+        // 最后一个等于target的位置
+        lo = 0;
+        hi = nums.length - 1;
+        while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] <= target) {
+            if (nums[mid] == target) {
+                last = mid;
+                lo = mid + 1;
+            } else if (nums[mid] < target) {
                 lo = mid + 1;
             } else {
-                hi = mid;
+                hi = mid - 1;
             }
         }
-        result[1] = lo - 1;
-        return result;
+        return new int[] {first, last};
     }
 
 }
