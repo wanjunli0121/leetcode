@@ -19,7 +19,7 @@ import java.util.LinkedList;
 public class Solution {
 
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, new IntervalComparator());
+        Arrays.sort(intervals, (a1, a2) -> Integer.compare(a1[0], a2[0]));
         LinkedList<int[]> merged = new LinkedList<>();
         for (int[] interval: intervals) {
             if (merged.isEmpty() || merged.getLast()[1] < interval[0]) {
@@ -33,13 +33,6 @@ public class Solution {
             }
         }
         return merged.toArray(new int[merged.size()][]);
-    }
-
-    private static class IntervalComparator implements Comparator<int[]> {
-        @Override
-        public int compare(int[] a1, int[] a2) {
-            return Integer.compare(a1[0], a2[0]);
-        }
     }
 
 }
