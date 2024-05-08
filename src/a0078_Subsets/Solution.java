@@ -1,21 +1,14 @@
 /*
-Given a set of distinct integers, nums,
-return all possible subsets.
-Note:
-Elements in a subset must be in non-descending order.
+Given an integer array nums of unique elements,
+return all possible subsets (the power set).
 The solution set must not contain duplicate subsets.
-For example,
-If nums = [1,2,3], a solution is:
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],
-  [1,3],
-  [2,3],
-  [1,2],
-  []
-]
+Return the solution in any order.
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
 */
 
 package a0078_Subsets;

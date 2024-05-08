@@ -30,6 +30,7 @@ public class Solution {
                     hi = mid - 1;
                 }
             } else {
+                // 无法确定在哪一侧，但lo肯定不是
                 lo++;
             }
         }
