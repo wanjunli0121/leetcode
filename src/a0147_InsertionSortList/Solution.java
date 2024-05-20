@@ -13,10 +13,10 @@ public class Solution {
             while (pre.next != null && head.val > pre.next.val) {
                 pre = pre.next;
             }
-            ListNode t = head;
-            head = head.next;
-            t.next = pre.next;
-            pre.next = t;
+            ListNode nextNode = head.next;
+            head.next = pre.next;
+            pre.next = head;
+            head = nextNode;
             pre = result;
         }
         return result.next;
