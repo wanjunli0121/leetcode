@@ -17,6 +17,7 @@ public class Solution {
                 return true;
             }
             // Compare lo with mid
+            // 找单调递增区间
             if (nums[lo] < nums[mid]) {
                 if (target >= nums[lo] && target < nums[mid]) {
                     hi = mid - 1;

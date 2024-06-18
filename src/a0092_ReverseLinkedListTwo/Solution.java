@@ -19,12 +19,11 @@ public class Solution {
             pre = pre.next;
         }
         ListNode node = pre.next;
-        ListNode nextNode = node.next;
         for (int i = 0; i < n - m; i++) {
+            ListNode nextNode = node.next;
             node.next = nextNode.next;
             nextNode.next = pre.next;
             pre.next = nextNode;
-            nextNode = node.next;
         }
         return result.next;
     }
