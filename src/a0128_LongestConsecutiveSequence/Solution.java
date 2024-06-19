@@ -23,10 +23,8 @@ public class Solution {
         int result = 0;
         for (int val: set) {
             if (!set.contains(val - 1)) {
-                int curVal = val;
                 int curLen = 1;
-                while (set.contains(curVal + 1)) {
-                    curVal++;
+                while (set.contains(val + curLen)) {
                     curLen++;
                 }
                 result = Math.max(curLen, result);
